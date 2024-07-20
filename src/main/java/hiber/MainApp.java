@@ -22,6 +22,17 @@ public class MainApp {
       userService.add(new User("User4", "Lastname4", "user4@mail.ru", new Car("BMW", 2023)));
 
       List<User> users = userService.listUsers();
+      printUser(users);
+
+      System.out.println("List User by car model and series-----------------------------------------");
+
+      List<User> usersByCar = userService.listUsersByCar("Toyota",2020);
+      printUser(usersByCar);
+
+      context.close();
+   }
+
+   private static void printUser(List<User> users){
       for (User user : users) {
          System.out.println("Id = "+user.getId());
          System.out.println("First Name = "+user.getFirstName());
@@ -31,7 +42,5 @@ public class MainApp {
          System.out.println("Car Series = " + user.getCar().getSeries());
          System.out.println();
       }
-
-      context.close();
    }
 }
